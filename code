@@ -1,0 +1,13 @@
+import pandas as pd
+
+crimes = pd.read_csv('ucr_by_state.csv')
+race = pd.read_csv('populations_states.csv')
+
+race['Date'] = pd.to_datetime(race['date'])
+race = race.set_index(['Date'])
+race_yr = race.resample('Y').mean()
+y = race_yr.index.year
+race_yr['Year'] = y
+i = crimes.merge(race_yr, left_on='year', right_on='Year')
+incarceration_rates = i[ ['jurisdiction'] + list(i.iloc[:,4:14]) + list(i.iloc[:,21:]) ]
+incarceration_rates.to_csv('incarceration_rates_merged.csv')
