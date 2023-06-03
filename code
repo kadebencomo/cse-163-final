@@ -50,7 +50,7 @@ hispanic = incarceration_rates.groupby('Year')['incarcerated_hispanic'].mean().r
 amerind = incarceration_rates.groupby('Year')['incarcerated_amerind'].mean().reset_index(name ='Amerind')
 asian = incarceration_rates.groupby('Year')['incarcerated_asian'].mean().reset_index(name ='Asian')
 
-fig, axs = plt.subplots(5, 1, figsize=(8, 12))
+fig, axs = plt.subplots(5, 1, figsize=(8, 15))
 axs[0].plot(white['Year'], white['White'], label='white')
 axs[0].plot(grouped_murder['Year'], grouped_murder['murder'], label='murders in US')
 axs[0].set_title('US White Prison Population versus Murder Rates Over Time')
