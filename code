@@ -19,6 +19,9 @@ incarceration_rates.to_csv('incarceration_rates_merged.csv')
 
 
 # research question 1
+
+
+# research question 2
 data['violent_crime_total'] = pd.to_numeric(data['violent_crime_total'], errors='coerce')
 data.dropna(subset=['violent_crime_total'], inplace=True)
 
@@ -76,3 +79,6 @@ for ax in axs:
 
 plt.tight_layout()
 plt.savefig('line_plot.png')
+
+
+# tests
