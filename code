@@ -19,6 +19,22 @@ incarceration_rates.to_csv('incarceration_rates_merged.csv')
 
 
 # research question 1
+crimes_columns = ['murder_manslaughter', 'rape_legacy', 'robbery', 'agg_assault', 
+                  'property_crime_total', 'burglary', 'larceny']
+data[crimes_columns] = data[crimes_columns].replace(',', '', regex=True).astype(float)
+grouped_data = data.groupby('Year')[crimes_columns].sum().reset_index()
+years_in_range = grouped_data[(grouped_data['Year'] >= 2015) & (grouped_data['Year'] <= 2018)]
+crime_names = ['Murder', 'Rape', 'Robbery', 'Assault', 'Property Crime', 'Burglary', 'Larceny']
+colors = ['red', 'skyblue', 'lightpink', 'purple', 'yellow', 'lightgreen', 'orange']
+for index, row in years_in_range.iterrows():
+    year = int(row['Year'])
+    data = row[crimes_columns]
+    plt.figure(figsize=(10, 6))
+    plt.bar(data.index, data.values, color=colors)
+    plt.title(f'Crimes for Year {year}')
+    plt.xlabel('Crime Type')
+    plt.ylabel('Number of Crimes (in millions)')
+    plt.xticks(data.index, crime_names)
 
 
 # research question 2
