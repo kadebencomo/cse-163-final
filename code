@@ -95,4 +95,10 @@ plt.tight_layout()
 plt.savefig('line_plot.png')
 
 
-# tests
+# for testing
+grouped_murder.to_csv('murders.csv')
+white.to_csv('white.csv')
+black.to_csv('black.csv')
+hispanic.to_csv('hispanic.csv')
+amerind.to_csv('amerind.csv')
+asian.to_csv('asian.csv')
